@@ -6,7 +6,6 @@ import { BcryptAdapter } from '../../config/bcrypt';
 
 export class AuthController{
 
-
      static async register( req:Request, res:Response):Promise<void>{
         try {
             const { User_Name, User_Email, User_Password } = req.body;
@@ -23,7 +22,7 @@ export class AuthController{
 
             res.status(201).json({
                'msg':'Usuario registrado',
-               'status':200,
+               'status':201,
                user
            });
 
