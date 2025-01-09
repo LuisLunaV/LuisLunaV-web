@@ -35,10 +35,14 @@ export class AuthController{
 
     static async login( req:Request, res:Response ):Promise<void>{
       try {
-        const body = req.body;
-        
+        const { User_Email, User_Password } = req.body;
+        console.log(User_Email)
+
+       const user = await User.findOne({ where:{ User_Email } });
+console.log(user)
        res.status(200).json({
-           'msg':'Login_controller'
+           'msg':'Login_controller',
+           user
        });
        
       } catch (error) {
