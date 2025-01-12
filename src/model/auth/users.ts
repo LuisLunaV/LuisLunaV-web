@@ -37,8 +37,12 @@ User.init({
     sequelize,
     modelName: 'User',
     tableName: 'Users',
-    timestamps: false
-
+    timestamps: false,
+    // defaultScope:{
+    //     attributes:{
+    //         exclude:['User_Password']
+    //     }
+    // }
 });
 
 export {

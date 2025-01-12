@@ -6,7 +6,9 @@ import { AuthController } from '../../controller/auth/auth.controller';
 
 const router = Router();
 
+router.get('/register', AuthController.renderRegister);
 
+router.get('/login', AuthController.renderLogin);
 
 router.post('/register',[
     check('User_Name', 'El campo nombre es obligatorio').not().isEmpty(),
@@ -19,8 +21,11 @@ router.post('/register',[
     validateProperties
 ], AuthController.register);
 
-router.post('/login', AuthController.login );
-
+router.post('/login',[
+    check('User_Email', 'El email es obligatorio').isEmail(),
+    check('User_Password', 'El password es obligatorio').not().isEmpty(),
+    validateProperties
+], AuthController.login );
 
 
 export default router;

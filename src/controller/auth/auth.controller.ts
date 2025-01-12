@@ -6,6 +6,32 @@ import { JwtAdapter } from '../../config/jwt';
 
 export class AuthController{
 
+    static renderRegister( req:Request, res:Response ){
+        try {
+            res.render('register', {
+                title: 'register'
+            });
+
+        } catch (error) {
+            res.status(500).json({
+                'Erro':`Internal server error. ${ error }`
+            });
+        }
+    }
+
+    static renderLogin( req:Request, res:Response ){
+        try {
+            res.render('login', {
+                tltle: 'loginAuth'
+            });
+
+        } catch (error) {
+            res.status(500).json({
+                'Erro':`Internal server error. ${ error }`
+            });
+        }
+    }
+
      static async register( req:Request, res:Response):Promise<void>{
         try {
             const { User_Name, User_Email, User_Password } = req.body;
@@ -68,11 +94,13 @@ export class AuthController{
         httpOnly: true,
         secure: true,
         sameSite: 'strict',
-        maxAge: 12 * 60 * 60 * 1000 
+        maxAge: 2 * 60 * 60 * 1000 
        })
 
        res.status(200).json({
-           user
+           id:user.User_Id,
+           name:user.User_Name,
+           email:user.User_Email
        });
        
       } catch (error) {
