@@ -22,7 +22,7 @@ export class AuthController{
     static renderLogin( req:Request, res:Response ){
         try {
             res.render('login', {
-                tltle: 'loginAuth'
+                title: 'login'
             });
 
         } catch (error) {

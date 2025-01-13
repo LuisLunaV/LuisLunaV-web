@@ -25,8 +25,15 @@ export class Server{
     private handlebars(){
         
         this.app.set('view engine', 'hbs');
-        this.app.set('views', path.resolve(__dirname, '../views'));
-        this.app.set('views', path.resolve(__dirname, '../views/auth'));
+        this.app.set('views', [
+            path.resolve(__dirname, '../views'),
+            path.resolve(__dirname, '../views/auth')
+        ]);
+        this.app.use((req, res, next) => {
+            console.log(`Request for ${req.url}`);
+            next();
+        });
+        
 
         // Ruta para las vistas principales
         const filePaths = path.resolve(__dirname, '../views/partials');
@@ -40,7 +47,11 @@ export class Server{
     //Middleware
     this.app.use(express.json());
     this.app.use(express.static('public'));
-    
+
+    this.app.use('/vendor/css', express.static(path.join(__dirname, '../../node_modules/bootstrap/dist/css')));
+    this.app.use('/vendor/js', express.static(path.join(__dirname, '../../node_modules/bootstrap/dist/js')));
+
+
     // Usar las rutas definidas    
     this.app.use( this.pathsWeb.auth, authRouter);
     this.app.use( allRouter );
