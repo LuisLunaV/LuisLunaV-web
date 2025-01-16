@@ -67,9 +67,9 @@ export class AuthController{
 
        if( !user ){
         return res.status(401).json({
-            "status": 401,
-            "error": "Unauthorized",
-            "message": "El usuario no existe."
+            status: 401,
+            error: "Unauthorized",
+            message: "El usuario no existe."
         });
        }
 
@@ -78,9 +78,9 @@ export class AuthController{
 
        if( !isMatched ){
            return res.status(401).json({
-            "status": 401,
-            "error": "Unauthorized",
-            "message": "El password es incorrecto."
+            status: 401,
+            error: "Unauthorized",
+            message: "El password es incorrecto."
         });
        }
        

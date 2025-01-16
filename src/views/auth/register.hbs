@@ -1,3 +1,87 @@
 {{> header}}
-<h1>desde register</h1>
+<div class="container d-flex justify-content-center pt-5">
+  <div class="row w-100 d-flex justify-content-center">
+    <div class="col-md-5">
+      <br />
+      <div class="card sombras-bottom mb-3">
+        <div class="card-body">
+          
+          <div class="text-center m-4">
+          <h3>
+          <i class="bi bi-person-circle"></i> 
+            Registrate
+            </h3>
+            <hr>
+          </div>
+
+          <form class="form-registro" method="POST">
+          
+            <div class="mb-3">
+              <input
+                type="text"
+                name="User_Name"
+                class="form-control"
+                id="nombreCompleto"
+                placeholder="Nombre completo"
+                required
+              />
+            </div>
+
+            <div class="mb-3">
+              <input
+                type="email"
+                name="User_Email"
+                class="form-control"
+                id="email"
+                placeholder="Correo electronico"
+                required                
+              />
+              <div id="emailHelp" class="form-text">
+                Nunca compartiremos tu correo electrónico con nadie más.
+              </div>
+            </div>
+            <div class="mb-3">
+              <input
+                type="password"
+                name="User_Password"
+                class="form-control"
+                id="password"
+                minlength="10"
+                placeholder="Password"
+                required
+              />
+            <div id="emailHelp" class="form-text">
+               Mínimo 10 caracteres, intercala letras, números y signos
+              </div>
+            </div>
+              <div class="mb-3">
+              <input
+                type="password"
+                name="repitePassword"
+                class="form-control"
+                id="repitePassword"
+                minlength="10"
+                placeholder="Repite Password"
+                required
+              />
+              <div id="emailHelp" class="form-text">
+                Ayudanos a validar que tu contraseña sea correcta.
+              </div>
+            </div>
+
+            <div class="d-grid gap-2 text-center">
+              <button id="btn-registro" type="submit" class="btn btn-primary">
+                Crear cuenta
+              </button>
+            </div>
+          </form>
+        </div>
+        <div class="card-footer text-center text-muted">
+              <span class=""><a href="/auth/login">&nbsp;Regresar</a></span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
 {{> footer}}

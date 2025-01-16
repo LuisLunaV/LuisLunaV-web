@@ -29,17 +29,18 @@ export class Server{
             path.resolve(__dirname, '../views'),
             path.resolve(__dirname, '../views/auth')
         ]);
-        this.app.use((req, res, next) => {
-            console.log(`Request for ${req.url}`);
-            next();
-        });
+    
         
 
         // Ruta para las vistas principales
         const filePaths = path.resolve(__dirname, '../views/partials');
+        const filePathsError = path.resolve(__dirname, '../views/partials/error');
+
 
         // Ruta para las vistas partials
              hbs.registerPartials( filePaths );
+             hbs.registerPartials( filePathsError );
+
     }
 
     public start(){
