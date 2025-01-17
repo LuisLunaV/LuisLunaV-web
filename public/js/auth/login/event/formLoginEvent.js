@@ -1,7 +1,7 @@
     import { loginUser } from '../services/api-post.js';
     import { userError } from '../components/userError.js';
+    import { passwordError } from '../components/passwordError.js';
     export const formLoginEvent=()=>{
-        console.log('desde form')
         const formLogin = document.querySelector('#formularioLogin');
 
         formLogin.addEventListener('submit', async( e )=>{
@@ -12,7 +12,9 @@
             
                 const result = await loginUser(data)
                 .catch(err =>{
-                userError(err.message);
+                (err.campo != 'password' ) ?
+                userError( err ):
+                passwordError( err );
                 });
         
         

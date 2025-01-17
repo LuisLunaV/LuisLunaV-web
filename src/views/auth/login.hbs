@@ -1,13 +1,14 @@
 {{> header}}
+<div class="div-container negro-mate size-container">
 <div class="container d-flex justify-content-center pt-5">
   <div class="row w-100 d-flex justify-content-center">
-    <div class="col-md-5">
+    <div class="col-12 col-sm-8 col-md-6 col-lg-4">
       <br />
-      <div class="card sombras-bottom">
+      <div class="card negro-mate border-yellow">
         <div class="card-body">
 
            <div class="text-center m-4">
-            <h3><i class="bi bi-person-circle"></i>Login</h3>
+            <h3 class="fuente-tittle"><i class="bi bi-person-circle"></i> Login</h3>
             <hr>
           </div>
           {{!-- init-form --}}
@@ -44,7 +45,7 @@
 
             <div class="mb-3 row">
               <div class="d-grid gap-2 text-center">
-                <button type="submit" class="btn btn-primary">Login</button>      
+                <button type="submit" class="btn btn-outline-warning">Login</button>      
               </div>
             </div>
 
@@ -52,13 +53,14 @@
           {{!-- end-form --}}
         </div>
         <div class="card-footer text-muted pb-3 d-grid gap-2 text-center">
-         <span class="mt-2 mb-2">¿No tienes una cuenta?
+         <span class="mt-2 mb-2 fuente-tittle">¿No tienes una cuenta?
                   <a href="/auth/register">&nbsp;Registrate</a>
           </span>
         </div>
       </div>
     </div>
+   <p class="text-center p-1" style="color: white;">v.1.1.0</p>
   </div>
 </div>
-<p class="text-center p-1">v.1.1.0</p>
+</div>
 {{> footer}}
