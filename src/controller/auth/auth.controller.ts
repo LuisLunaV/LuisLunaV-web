@@ -102,7 +102,8 @@ export class AuthController{
        res.status(200).json({
            id:user.User_Id,
            name:user.User_Name,
-           email:user.User_Email
+           email:user.User_Email,
+           redirect: '/home'
        });
        
       } catch (error) {

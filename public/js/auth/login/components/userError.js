@@ -1,6 +1,7 @@
 export const userError =( { message })=>{
   
     const divUserError = document.querySelector('#user-error');
+    const inputEmail   = document.querySelector('#inputEmail');
     
     divUserError.innerHTML = '';
     
@@ -12,6 +13,8 @@ export const userError =( { message })=>{
     p.textContent = message;
     div.appendChild( p );
     divUserError.appendChild( div );
+
+    inputEmail.value = '';
 
     setTimeout(()=>{
       div.remove();

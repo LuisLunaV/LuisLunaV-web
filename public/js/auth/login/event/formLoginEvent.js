@@ -10,13 +10,20 @@
             const formData = new FormData( e.target );
             const data = Object.fromEntries(formData.entries());
             
-                const result = await loginUser(data)
+                 await loginUser(data)
                 .catch(err =>{
                 (err.campo != 'password' ) ?
                 userError( err ):
                 passwordError( err );
                 });
-        
-        
+
+                setTimeout(()=>{
+                const inputs = e.target.querySelectorAll('input');
+                inputs.forEach(element => {
+                if(!element.value)return;
+                element.value = '';
+                });
+                },1000);
+                
         });
     }

@@ -10,6 +10,11 @@ export const loginUser= async( payload )=>{
         });
         if ( resp.ok ) {
             const data = await resp.json();
+            
+            if( data.redirect ){
+                window.location.href = data.redirect;
+            }
+
             return data;
         }else{
             const error = await resp.json();            

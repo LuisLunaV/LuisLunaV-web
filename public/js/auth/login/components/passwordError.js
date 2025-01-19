@@ -1,8 +1,9 @@
 export const passwordError =( { message })=>{
   
-    const divUserError = document.querySelector('#password-error');
-    
-    divUserError.innerHTML = '';
+    const divPasswordError  = document.querySelector('#password-error');
+    const inputPassword = document.querySelector('#inputPassword');
+
+    divPasswordError.innerHTML = '';
     
     const div = document.createElement('div');
     const p = document.createElement('p');
@@ -11,7 +12,9 @@ export const passwordError =( { message })=>{
     p.classList.add('fw-medium', 'text-light', 'm-1', 'ps-1');
     p.textContent = message;
     div.appendChild( p );
-    divUserError.appendChild( div );
+    divPasswordError.appendChild( div );
+
+    inputPassword.value = '';
 
     setTimeout(()=>{
       div.remove();

@@ -1,8 +1,9 @@
 import express from 'express';
-import { allRouter, authRouter } from '../routes/index.routes';
+import { allRouter, authRouter, homeRouter } from '../routes/index.routes';
 import { dbConnection } from '../database/config.db';
 import hbs from 'hbs';
 import path from 'path';
+import cookieParser from 'cookie-parser'
 
 export class Server{
     private readonly app = express();
@@ -47,6 +48,8 @@ export class Server{
 
     //Middleware
     this.app.use(express.json());
+    this.app.use(cookieParser());
+
     this.app.use(express.static('public'));
 
     this.app.use('/vendor/css', express.static(path.join(__dirname, '../../node_modules/bootstrap/dist/css')));
@@ -55,6 +58,7 @@ export class Server{
 
     // Usar las rutas definidas    
     this.app.use( this.pathsWeb.auth, authRouter);
+    this.app.use( this.pathsWeb.home, homeRouter);
     this.app.use( allRouter );
     
     this.app.listen(this.port,()=>{
