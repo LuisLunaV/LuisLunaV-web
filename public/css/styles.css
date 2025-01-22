@@ -5,6 +5,13 @@
     --fuentePrincipal: 'Share Tech Mono', monospace;;
 }
 /* Uilidades*/
+
+.opacity-1{
+  opacity: 1 !important;
+  transform: translateY(0%) !important;
+  transition: all 500ms ease;
+  }
+
 .fuente-tittle{
     color: white;
     font-family: var(--fuentePrincipal);

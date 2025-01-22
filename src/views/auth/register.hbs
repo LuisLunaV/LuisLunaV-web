@@ -1,8 +1,10 @@
 {{> header}}
-<div class="div-container negro-mate size-container">
+{{> alerts}}
+
+<div class="negro-mate size-container">
 <div class="container d-flex justify-content-center pt-5">
   <div class="row w-100 d-flex justify-content-center">
-    <div class="col-12 col-sm-8 col-md-6 col-lg-4">
+    <div class="col-12 col-sm-8 col-md-6 col-lg-5">
       <br />
       <div class="card negro-mate border-yellow mb-3">
         <div class="card-body">
@@ -15,7 +17,7 @@
             <hr>
           </div>
 
-          <form class="form-registro" method="POST">
+          <form class="form-registro" method="POST" id="formularioRegister" action="auth/register">
           
             <div class="mb-3">
               <input
@@ -62,9 +64,9 @@
               <div class="mb-3">
               <input
                 type="password"
-                name="repitePassword"
+                name="Password_dos"
                 class="form-control"
-                id="repitePassword"
+                id="Password_dos"
                 minlength="10"
                 placeholder="Repite Password"
                 required

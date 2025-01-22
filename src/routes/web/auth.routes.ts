@@ -12,7 +12,7 @@ router.get('/login', AuthController.renderLogin);
 
 router.post('/register',[
     check('User_Name', 'El campo nombre es obligatorio').not().isEmpty(),
-    check('User_Email', 'El email es obligatorio').isEmail().custom( emailExiste ),
+    check('User_Email', 'El email no es valido').isEmail().custom( emailExiste ),
     check('User_Password', 'El password es obligatorio')
     .not().isEmpty()
     .isLength({min:10}).withMessage('El password debe tener minimo 10 caracteres')

@@ -44,13 +44,12 @@ export class AuthController{
                 User_Password: hashPassword( User_Password )
             };
             
-            const user = await User.create( data );
+            await User.create( data );
 
             res.status(201).json({
-               'status':201,
-               'message':'Usuario registrado',
-               user
-           });
+                message:'Usuario registrado con exito.',
+                redirect:'/login'
+            });
 
         } catch (error) {
             res.status(500).json({

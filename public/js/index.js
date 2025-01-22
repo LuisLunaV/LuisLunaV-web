@@ -1,4 +1,5 @@
 import { initLogin } from './auth/login/initLogin.js';
+import { initRegister } from './auth/register/initRegister.js';
 const RUTA_LOGIN    = '/auth/login';
 const RUTA_REGISTER = '/auth/register';
 
@@ -10,7 +11,7 @@ const manejoDeRutas=( ventanaActual )=>{
              initLogin()
             break;
         case RUTA_REGISTER:
-            console.log('register')
+            initRegister();
         break;
     
         default:

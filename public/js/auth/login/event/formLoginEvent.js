@@ -3,27 +3,28 @@
     import { passwordError } from '../components/passwordError.js';
     export const formLoginEvent=()=>{
         const formLogin = document.querySelector('#formularioLogin');
+        const inputs = formLogin.querySelectorAll('input');
 
+        const clearInput=()=> inputs.forEach(element => { element.value = '' });
+        
         formLogin.addEventListener('submit', async( e )=>{
             e.preventDefault();
 
             const formData = new FormData( e.target );
             const data = Object.fromEntries(formData.entries());
             
-                 await loginUser(data)
-                .catch(err =>{
-                (err.campo != 'password' ) ?
-                userError( err ):
-                passwordError( err );
-                });
+            try {
 
-                setTimeout(()=>{
-                const inputs = e.target.querySelectorAll('input');
-                inputs.forEach(element => {
-                if(!element.value)return;
-                element.value = '';
-                });
-                },1000);
-                
+            await loginUser(data);
+            clearInput();
+
+            } catch (error){
+
+                (error.campo != 'password' ) ?
+                userError( error ):
+                passwordError( error );     
+
+            }
+
         });
     }

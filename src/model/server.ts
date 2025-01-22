@@ -34,13 +34,15 @@ export class Server{
         
 
         // Ruta para las vistas principales
-        const filePaths = path.resolve(__dirname, '../views/partials');
-        const filePathsError = path.resolve(__dirname, '../views/partials/error');
+        const filePaths = [path.resolve(__dirname, '../views/partials'),
+                           path.resolve(__dirname, '../views/partials/error'),
+                           path.resolve(__dirname, '../views/partials/alerts') ];
 
 
         // Ruta para las vistas partials
-             hbs.registerPartials( filePaths );
-             hbs.registerPartials( filePathsError );
+        filePaths.forEach( path =>{
+            hbs.registerPartials( path );
+        });
 
     }
 
