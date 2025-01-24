@@ -1,7 +1,10 @@
 import { initLogin } from './auth/login/initLogin.js';
 import { initRegister } from './auth/register/initRegister.js';
+import { initPanel } from './panel/initPanel.js';
 const RUTA_LOGIN    = '/auth/login';
 const RUTA_REGISTER = '/auth/register';
+const RUTA_PANEL    = '/panel';
+
 
 
 const manejoDeRutas=( ventanaActual )=>{
@@ -13,7 +16,9 @@ const manejoDeRutas=( ventanaActual )=>{
         case RUTA_REGISTER:
             initRegister();
         break;
-    
+        case RUTA_PANEL:
+            initPanel();
+        break;
         default:
             break;
     }

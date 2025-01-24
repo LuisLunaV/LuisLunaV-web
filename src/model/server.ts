@@ -1,5 +1,5 @@
 import express from 'express';
-import { allRouter, authRouter, homeRouter } from '../routes/index.routes';
+import { allRouter, authRouter, panelRouter } from '../routes/index.routes';
 import { dbConnection } from '../database/config.db';
 import hbs from 'hbs';
 import path from 'path';
@@ -10,7 +10,7 @@ export class Server{
     private readonly port:number;
     private pathsWeb = {
         auth: '/auth',
-        home: '/home'
+        panel: '/panel'
     }
 
     constructor( port:number ){
@@ -60,7 +60,7 @@ export class Server{
 
     // Usar las rutas definidas    
     this.app.use( this.pathsWeb.auth, authRouter);
-    this.app.use( this.pathsWeb.home, homeRouter);
+    this.app.use( this.pathsWeb.panel, panelRouter);
     this.app.use( allRouter );
     
     this.app.listen(this.port,()=>{

@@ -60,6 +60,7 @@ export class AuthController{
 
     static async login( req:Request, res:Response ):Promise<any>{
       try {
+
         const { User_Email, User_Password } = req.body;
 
        const user = await User.findOne({ where:{ User_Email } });
@@ -102,7 +103,7 @@ export class AuthController{
            id:user.User_Id,
            name:user.User_Name,
            email:user.User_Email,
-           redirect: '/home'
+           redirect: '/panel'
        });
        
       } catch (error) {
