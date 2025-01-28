@@ -3,6 +3,24 @@
 :root{
     --fuentePrincipal: 'Share Tech Mono', monospace;;
 }
+html {
+  margin: 0;
+  box-sizing: border-box;
+  /* scroll-behavior: smooth; */
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+}
+
+body {
+  margin: 0;
+  font-size: 1.6rem;
+  line-height: 2;
+}
+
 /* Uilidades*/
 .ocultar{
   opacity: 0;
