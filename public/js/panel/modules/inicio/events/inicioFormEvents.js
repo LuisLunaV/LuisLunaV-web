@@ -1,15 +1,23 @@
+import { postInformation} from '../../../services/api-post.js';
+import { apiEndPoints } from '../../../config/apiEndPoints.js';
+import { clearInput } from '../../../utils/formUtils.js';
+
 export const inicioFormEvents=()=>{
+
     const formInicioPost = document.querySelector("#formInicioPost");
     const formInicioLista = document.querySelector("#formInicioLista");
 
-   
-
-    formInicioPost.addEventListener('submit',( e )=>{
+    formInicioPost.addEventListener('submit', async( e )=>{
         e.preventDefault();
         const formData = new FormData( e.target );
-        const data = Object.fromEntries( formData.entries());
-        console.log(data)
-        clearInput( formInicioPost );
+        const payload = Object.fromEntries( formData.entries());
+
+        try {
+            await postInformation(payload, apiEndPoints.apiHome )
+            clearInput( formInicioPost );
+        } catch (error) {
+            console.log(error)
+        }
     });
 
     formInicioLista.addEventListener('change',({ target })=>{
@@ -19,7 +27,3 @@ export const inicioFormEvents=()=>{
 }
 
 
-function clearInput( formulario ){
-    const inputs = formulario.querySelectorAll('input[type="text"]');
-    inputs.forEach( element => element.value = '' );
-}
