@@ -1,6 +1,6 @@
 export const registerUser = async( payload )=>{
   try {
-    const resp = await fetch('/auth/register',{
+    const resp = await fetch('/auth/api/v1/register',{
         method: 'POST',
         body: JSON.stringify( payload ),
         headers:{

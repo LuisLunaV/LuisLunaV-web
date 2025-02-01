@@ -1,5 +1,5 @@
 import express from 'express';
-import { allRouter, authRouter, panelRouter } from '../routes/index.routes';
+import { allRouter, authRouter, panelRouter, homeRouter } from '../routes/index.routes';
 import { dbConnection } from '../database/config.db';
 import hbs from 'hbs';
 import path from 'path';
@@ -12,7 +12,7 @@ export class Server{
         auth: '/auth',
         panel: '/panel'
     }
-
+   
     constructor( port:number ){
         this.port = port;
         this.connectDB();
@@ -61,6 +61,7 @@ export class Server{
     // Usar las rutas definidas    
     this.app.use( this.pathsWeb.auth, authRouter);
     this.app.use( this.pathsWeb.panel, panelRouter);
+    this.app.use( this.pathsWeb.panel, homeRouter);
     this.app.use( allRouter );
     
     this.app.listen(this.port,()=>{

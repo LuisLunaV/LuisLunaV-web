@@ -1,6 +1,6 @@
 export const loginUser= async( payload )=>{
     try {
-        const resp = await fetch('/auth/login',{
+        const resp = await fetch('/auth/api/v1/login',{
             method: 'POST',
             body: JSON.stringify( payload ),
             headers:{

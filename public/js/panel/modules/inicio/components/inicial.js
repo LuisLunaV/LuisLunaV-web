@@ -10,6 +10,7 @@ export const inicialHTML=()=>{
     mainInicio.appendChild( divInicialContainer );
 }
 
+// creamos pormulario principal del modulo inicial
 function formInicialHtml(){
 
     const divInicioRigth = document.createElement('div')
@@ -41,6 +42,7 @@ function formInicialHtml(){
 
 }
 
+//Creamo formulario con listado de saludos agregados 
 function formListInicioHtml(){
     const divListInicioLeft = document.createElement('div');
     divListInicioLeft.className = 'inicio-main-left w-50 mx-3';
@@ -49,12 +51,21 @@ function formListInicioHtml(){
     formListInicial.method = 'POST';
     formListInicial.id = 'formInicioLista';
 
+    const divH1 = document.createElement('div');
+    divH1.className = 'mx-auto mt-5';
+    const h1 = document.createElement('h1');
+    h1.className = 'text-white text-center text-decoration-underline fw-bold fs-1';
+    h1.textContent = 'Sin informacion.';
+
+    divH1.appendChild(h1);
+    formListInicial.appendChild(divH1);
     divListInicioLeft.appendChild( formListInicial );
 
     return divListInicioLeft;
 
 }
 
+// function para crear los inputs de los forms
 function crearInputDiv( name, placeholder){
 
     const div = document.createElement('div');

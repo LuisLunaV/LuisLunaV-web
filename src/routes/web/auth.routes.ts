@@ -10,7 +10,7 @@ router.get('/register', AuthController.renderRegister);
 
 router.get('/login', AuthController.renderLogin);
 
-router.post('/register',[
+router.post('/api/v1/register',[
     check('User_Name', 'El campo nombre es obligatorio').not().isEmpty(),
     check('User_Email', 'El email no es valido').isEmail().custom( emailExiste ),
     check('User_Password', 'El password es obligatorio')
@@ -21,7 +21,7 @@ router.post('/register',[
     validateProperties
 ], AuthController.register);
 
-router.post('/login',[
+router.post('/api/v1/login',[
     check('User_Email', 'El email es obligatorio').isEmail(),
     check('User_Password', 'El password es obligatorio').not().isEmpty(),
     validateProperties
