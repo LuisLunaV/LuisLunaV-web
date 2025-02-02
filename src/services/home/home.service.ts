@@ -25,7 +25,7 @@ export class HomeServices implements IHomeService{
                     Home_Status:true
                 }
             });
-    console.log(statusUpdate);
+            
             return;
         }catch( error ){
                console.error('Error en updateStatusHome:', error);
