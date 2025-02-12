@@ -1,3 +1,3 @@
 export const apiEndPoints = {
-    apiHome:'/panel/api/v1/home',
+    apiHome:'/panel/api/v1/home/',
 }

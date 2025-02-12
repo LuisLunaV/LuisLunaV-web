@@ -12,12 +12,23 @@
   background-color: #3b2400;
 }
 
-.div-inicial label {
+.div-inicial label{
   color: #ffc107;
   transition: all 0.2s ease;
 }
 
 .div-inicial:hover label {
+  transition: all 0.2s ease;
+  color: #fff;
+}
+
+.div-inicial i{
+  cursor: pointer;
+  color: #ffc107;
+  transition: all 0.2s ease;
+}
+
+.div-inicial:hover i {
   transition: all 0.2s ease;
   color: #fff;
 }

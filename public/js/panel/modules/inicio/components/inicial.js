@@ -7,7 +7,7 @@ import { ImprimirHome } from '../helper/imprimirSaludos.js';
     mainInicio.innerHTML = '';
 
     const divInicialContainer = document.createElement('div');
-    divInicialContainer.className = 'd-flex flex-row w-100';
+    divInicialContainer.className = 'd-flex flex-column align-items-center flex-md-row align-items-md-start w-100';
     
     divInicialContainer.appendChild( formInicialHtml() );
 
@@ -88,25 +88,34 @@ function formListInicioHtml(){
 }
 
 function inputRadioInformation( info ){
-
     const div = document.createElement('div');
     div.className = 'div-inicial py-2 px-3 my-2';
+    div.id = `${info.Home_Id}`;
 
     const input = document.createElement('input');
     input.className = 'form-check-input me-1';
     input.type = 'radio';
     input.name ='listGroupRadio';
-    input.id=`${info.Home_Id}`;
-    input.checked = `${ info.Status}`;
+    input.id=`${ info.Home_Id }`;
+    input.checked = info.Home_Status;
 
     const divLabel = document.createElement('div');
-    divLabel.className = 'mx-2';
+    divLabel.className = 'mx-2 w-100 d-flex flex-row justify-content-between';
 
     const saludo    = createLabel( info.Home_Id, info.Home_InitialGreeting );
-    const profesion = createLabel( info.Home_Id, info.Home_ProfesionName );
-    divLabel.appendChild( saludo );
-    divLabel.appendChild( profesion );
 
+    const divLabelIcon = document.createElement('div');
+    divLabelIcon.className = 'w-50 d-flex flex-row justify-content-between';
+    const profesion = createLabel( info.Home_Id, info.Home_ProfesionName );
+    const icon = document.createElement('i');
+    icon.className = 'bi bi-trash';
+    icon.id = 'i-delete'
+
+    divLabelIcon.appendChild( profesion );
+    divLabelIcon.appendChild( icon );
+
+    divLabel.appendChild( saludo );
+    divLabel.appendChild( divLabelIcon );
     div.appendChild( input );
     div.appendChild( divLabel );
 

@@ -1,33 +1,51 @@
-import { postInformation} from '../../../services/api-post.js';
-import { apiEndPoints } from '../../../config/apiEndPoints.js';
-import { clearInput } from '../../../utils/formUtils.js';
-import { imprimirHome } from '../components/inicial.js';
-export const inicioFormEvents=()=>{
+import {
+  postInformation,
+  patchInformation,
+  deleteInformation,
+} from "../../../services/index.js";
+import { apiEndPoints } from "../../../config/apiEndPoints.js";
+import { clearInput } from "../../../utils/formUtils.js";
+import { imprimirHome } from "../components/inicial.js";
 
-    const formInicioPost = document.querySelector("#formInicioPost");
-    const formInicioLista = document.querySelector("#formInicioLista");
+export const inicioFormEvents = () => {
+  const formInicioPost = document.querySelector("#formInicioPost");
+  const formInicioLista = document.querySelector("#formInicioLista");
 
-    if( !formInicioPost )return;
-        formInicioPost.addEventListener('submit', async( e )=>{
-        e.preventDefault();
-        const formData = new FormData( e.target );
-        const payload = Object.fromEntries( formData.entries());
+  if (!formInicioPost) return;
+  formInicioPost.addEventListener("submit", async (e) => {
+    e.preventDefault();
+    const formData = new FormData(e.target);
+    const payload = Object.fromEntries(formData.entries());
 
-        try {
-             await postInformation(payload, apiEndPoints.apiHome )
-             imprimirHome.getSaludos(); 
-             clearInput( formInicioPost );
+    try {
+      await postInformation(payload, apiEndPoints.apiHome);
+      imprimirHome.getSaludos();
+      clearInput(formInicioPost);
+    } catch (error) {
+      console.error(error);
+    }
+  });
 
-        } catch (error) {
-            console.log(error)
-        }
-    });
+  if (!formInicioLista) return;
+  formInicioLista.addEventListener("change", async ({ target }) => {
+    const id = target.id;
 
-    if( !formInicioLista )return;
-    formInicioLista.addEventListener('change',({ target })=>{
-        const typeElemnt = target.tye;
-        console.log(typeElemnt)
-    });
-}
+    try {
+      await patchInformation(id, apiEndPoints.apiHome);
+    } catch (error) {
+      console.error(error);
+    }
+  });
 
-
+  formInicioLista.addEventListener("click", async ({ target }) => {
+    const element = target.id;
+    if (element != "i-delete") return;
+    const id = target.closest(".div-inicial").id;
+    try {
+      await deleteInformation(id, apiEndPoints.apiHome);
+      imprimirHome.getSaludos();
+    } catch (error) {
+      console.error(error);
+    }
+  });
+};

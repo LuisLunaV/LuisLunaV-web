@@ -1,6 +1,9 @@
-export const getInformation = async( url )=>{
+export const patchInformation = async(id, url)=>{
     try {
-        const resp = await fetch(url, { credentials: 'include' });
+        const resp = await fetch(`${url}${id}`,{
+            method: 'PATCH',
+            credentials: 'include'
+        });
     
         if( resp.ok ){
             const data = await resp.json();

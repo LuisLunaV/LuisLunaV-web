@@ -20,4 +20,13 @@ router.post('/api/v1/home',[
     validateProperties
 ],homeController.addMessages );
 
+router.patch('/api/v1/home/:id',[
+    validateJWT,
+    validateProperties
+], homeController.patchMessage);
+
+router.delete('/api/v1/home/:id',[
+    validateJWT,
+    validateProperties
+], homeController.deleteMessage);
 export default router;
